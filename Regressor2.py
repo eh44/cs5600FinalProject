@@ -8,9 +8,7 @@ from sklearn.pipeline import FunctionTransformer, Pipeline
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.tree import DecisionTreeRegressor
 import ast
-def binarize_ingredients(X):
-    mlb = MultiLabelBinarizer()
-    return mlb.fit_transform(X)
+
 def main():
     df = pd.read_csv('recipes.csv')
 
@@ -50,7 +48,7 @@ def main():
     pipeline.fit(X_train, y_train)
     print('step3')
 
-    with open('random_forest.pkl', 'wb') as f:
+    with open('decision_tree.pkl', 'wb') as f:
         pickle.dump(pipeline, f)
 
     y_pred = pipeline.predict(X_test)
@@ -72,7 +70,7 @@ def main():
     y_pred = opt.predict(X_test)
     opt_mse = mean_squared_error(y_test, y_pred)
     print(opt_mse)
-    with open('random_forest_optimized.pkl', 'wb') as f:
+    with open('decision_tree_optimized.pkl', 'wb') as f:
         pickle.dump(opt.best_estimator_, f)
     return mse, opt_mse
 
