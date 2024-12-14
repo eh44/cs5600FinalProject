@@ -8,9 +8,6 @@ from sklearn.pipeline import FunctionTransformer, Pipeline
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import MultiLabelBinarizer
 import ast
-def binarize_ingredients(X):
-    mlb = MultiLabelBinarizer()
-    return mlb.fit_transform(X)
 def main():
     df = pd.read_csv('recipes.csv')
 
